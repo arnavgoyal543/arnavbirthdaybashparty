@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Arnav's Birthday Bash Invitation!</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+</head>
+<body>
+  <!-- Preloader -->
+  <div id="preloader"><div class="gift-loader"></div></div>
+
+  <!-- Controls -->
+  <div id="controls-container">
+    <button id="music-btn">🔇</button>
+    <button id="theme-btn">🤖</button> <!-- Robo Theme Toggle -->
+  </div>
+  <audio id="bg-music" src="1.mp3" loop></audio>
+
+  <canvas id="confetti"></canvas>
+  <div class="balloon-area"></div>
+
+  <div class="container">
+    <h1 class="animated-h1">🎉 You're Invited! 🎉</h1>
+    <p class="subhead animated-p">To Arnav's Awesome Birthday Bash<br>
+      <span>Date:</span> 5th October 2025<br>
+      <span>Venue:</span> 123 Party Lane, Fun City
+    </p>
+    <div class="cake"></div>
+    <form id="rsvp-form" class="animated-form">
+      <h2>RSVP Here</h2>
+      <input type="text" id="name" placeholder="Your Name" required>
+      <input type="tel" id="phone" placeholder="Phone Number" required>
+      <input type="text" id="song" placeholder="Song Request? (Optional)"> <!-- Song Request Field -->
+      <input type="text" id="msg" placeholder="Message (optional)">
+      <button type="submit" class="rsvp-btn">I'm Coming! 🎈</button>
+      <div id="status"></div>
+    </form>
+
+    <!-- "Who's Coming?" Section -->
+    <div id="whos-coming" class="animated-section">
+      <h2>Who's Coming?</h2>
+      <ul id="guest-list"></ul>
+      <p id="no-guests-yet" style="display: none;">Be the first to RSVP!</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

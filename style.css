@@ -1,0 +1,401 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #f0a5c9 0%, #ffe985 100%);
+  overflow-x: hidden;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 440px;
+  margin: 60px auto 0 auto;
+  background: rgba(255,255,255,0.90);
+  border-radius: 24px;
+  box-shadow: 0 14px 40px rgba(255, 136, 90, 0.15);
+  padding: 42px 32px;
+  text-align: center;
+  animation: fadeInUp 1.2s cubic-bezier(.5,1.6,.4,.7);
+  transition: margin 0.4s, padding 0.4s; /* Smooth transitions for resizing */
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px);}
+  to   { opacity: 1; transform: translateY(0);}
+}
+
+.animated-h1 {
+  font-size: 2.5em;
+  color: #ff6f91;
+  margin-bottom: 10px;
+  animation: bounceIn 1.1s;
+  transition: font-size 0.4s; /* Smooth transitions */
+}
+@keyframes bounceIn {
+  0% {transform: scale(0.8);}
+  50%{transform: scale(1.1);}
+  80%{transform: scale(0.95);}
+  100%{transform: scale(1);}
+}
+
+.animated-p {
+  font-size: 1.15em;
+  color: #222;
+  margin-bottom: 22px;
+  animation: fadeIn 1.7s;
+  transition: font-size 0.4s; /* Smooth transitions */
+}
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+.cake {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 22px auto;
+  background: url('https://img.icons8.com/color/120/birthday-cake.png') no-repeat center/cover;
+  animation: cakeBounce 2.5s infinite alternate;
+  transition: width 0.4s, height 0.4s; /* Smooth transitions */
+}
+@keyframes cakeBounce {
+  0% {transform: translateY(0);}
+  100% {transform: translateY(-16px);}
+}
+
+.animated-form {
+  animation: fadeInUp 2s;
+}
+input, .rsvp-btn {
+  display: block;
+  width: 90%;
+  margin: 14px auto;
+  padding: 12px;
+  font-size: 1em;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  box-shadow: 0 1px 12px rgba(255,111,145,0.09);
+  transition: box-shadow 0.3s, background 0.3s;
+}
+input:focus {
+  box-shadow: 0 2px 16px #ff6f91aa;
+  background: #fff8f0;
+}
+.rsvp-btn {
+  background: linear-gradient(90deg,#ff6f91 40%,#ffe985 100%);
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 3px 20px #ff6f9140;
+  transition: transform 0.2s;
+}
+.rsvp-btn:hover {
+  transform: scale(1.08) rotate(-2deg);
+  background: linear-gradient(90deg,#ffd6e0 40%,#ffb347 100%);
+}
+
+#status {
+  color: #ff6f91;
+  margin-top: 10px;
+  font-weight: 600;
+  min-height: 24px;
+}
+
+/* Confetti canvas covers everything */
+#confetti {
+  position: fixed;
+  top:0; left:0; width:100vw; height:100vh;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Balloons animation */
+.balloon-area {
+  position: fixed;
+  top:0; left:0; width:100vw; height:100vh;
+  pointer-events: none;
+  z-index:0;
+}
+
+/* Balloon styles */
+.balloon {
+  position: absolute;
+  width: 56px;
+  height: 72px;
+  background: radial-gradient(circle at 60% 40%, #ffe985 80%, #ff6f91 100%);
+  border-radius: 50% 50% 55% 55%/60% 60% 40% 40%;
+  box-shadow: 0 8px 18px #ff6f9140;
+  animation: balloonFloat 7s infinite cubic-bezier(.22,.61,.36,1);
+}
+@keyframes balloonFloat {
+  0% {transform: translateY(0);}
+  50%{transform: translateY(-90vh);}
+  100%{transform: translateY(0);}
+}
+.balloon:after {
+  content:'';
+  display:block;
+  position:absolute;
+  left:26px; top:60px;
+  width:4px; height:24px;
+  background: #f8b3c8;
+  border-radius: 2px;
+}
+
+.balloon:nth-child(2) {left:20vw; top:88vh; background:radial-gradient(circle at 40% 50%, #ffb347 80%, #ff6f91 100%);}
+.balloon:nth-child(3) {left:60vw; top:92vh; background:radial-gradient(circle at 70% 40%, #e0aaff 80%, #ff6f91 100%);}
+.balloon:nth-child(4) {left:80vw; top:85vh; background:radial-gradient(circle at 60% 40%, #b3ffae 80%, #ff6f91 100%);}
+.balloon:nth-child(5) {left:40vw; top:95vh; background:radial-gradient(circle at 60% 40%, #ffe985 80%, #e0aaff 100%);}
+
+
+/* Preloader Styles */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #f0a5c9; /* Match the theme */
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+  opacity: 1;
+  visibility: visible;
+}
+
+#preloader.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.gift-loader {
+  width: 80px;
+  height: 80px;
+  background: url('https://img.icons8.com/plasticine/100/gift.png') no-repeat center/contain;
+  animation: pulseGift 1.5s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+@keyframes pulseGift {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+/* --- NEW & IMPROVED RESPONSIVE DESIGN --- */
+
+/* For smaller tablets */
+@media (max-width: 768px) {
+  .container {
+    margin: 40px 20px 0 20px; /* Add horizontal margin */
+    padding: 32px 24px;
+  }
+}
+
+/* For mobile phones */
+@media (max-width: 480px) {
+  .container {
+    margin: 20px 10px; /* Reduce top and side margins for a tighter fit */
+    padding: 24px 16px;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(255, 136, 90, 0.1);
+  }
+
+  .animated-h1 {
+    font-size: 2.1em; /* Smaller heading for small screens */
+  }
+
+  .animated-p {
+    font-size: 1.05em; /* Adjust sub-heading font */
+  }
+
+  .cake {
+    width: 90px; /* A more balanced cake size for mobile */
+    height: 90px;
+    margin-bottom: 16px;
+  }
+
+  input, .rsvp-btn {
+    padding: 14px; /* A little more padding for easier tapping */
+    font-size: 1.05em;
+  }
+
+  .rsvp-btn:hover {
+    transform: scale(1.05); /* Make hover effect less dramatic on mobile */
+    background: linear-gradient(90deg,#ff6f91 40%,#ffe985 100%);
+  }
+}
+/* --- APPEND THESE STYLES TO YOUR style.css FILE --- */
+
+/* Music Control Button */
+#music-control {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 1000;
+}
+
+#music-btn {
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  transition: transform 0.2s, background 0.2s;
+}
+
+#music-btn:hover {
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+/* "Who's Coming?" Section */
+#whos-coming {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #ffe985;
+}
+
+#whos-coming h2 {
+  color: #ff6f91;
+  font-size: 1.8em;
+  margin-bottom: 20px;
+}
+
+#guest-list {
+  list-style: none;
+  padding: 0;
+  max-height: 240px; /* Limit height and make it scrollable */
+  overflow-y: auto;
+}
+
+#guest-list li {
+  background: #fff8f0;
+  color: #333;
+  padding: 10px 15px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  font-weight: 500;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+#no-guests-yet {
+  color: #555;
+  font-style: italic;
+}
+/* Container for control buttons */
+#controls-container {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 1000;
+  display: flex;
+  gap: 10px;
+}
+
+#music-btn, #theme-btn {
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  transition: transform 0.2s, background 0.2s;
+}
+
+#music-btn:hover, #theme-btn:hover {
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+/* --- ROBO THEME STYLES --- */
+body.robo-theme {
+  background: #1a1a2e;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+body.robo-theme .container {
+  background: rgba(22, 22, 39, 0.85);
+  border: 1px solid #00d1ff;
+  box-shadow: 0 0 25px rgba(0, 209, 255, 0.3);
+}
+
+body.robo-theme .animated-h1,
+body.robo-theme #whos-coming h2 {
+  color: #00d1ff;
+  text-shadow: 0 0 8px #00d1ff;
+  animation: glitch 1s infinite;
+}
+
+body.robo-theme .animated-p,
+body.robo-theme .animated-p span {
+  color: #e0e0e0;
+}
+
+body.robo-theme .cake {
+  filter: hue-rotate(180deg) brightness(1.2); /* Change cake color */
+}
+
+body.robo-theme input {
+  background: #16213e;
+  border: 1px solid #0f3460;
+  color: #e0e0e0;
+}
+
+body.robo-theme input::placeholder {
+  color: #537895;
+}
+
+body.robo-theme input:focus {
+  background: #1a1a2e;
+  box-shadow: 0 0 15px #00d1ff55;
+}
+
+body.robo-theme .rsvp-btn {
+  background: linear-gradient(90deg, #e94560 0%, #0f3460 100%);
+  color: #ffffff;
+}
+
+body.robo-theme #status {
+  color: #e94560;
+}
+
+body.robo-theme #guest-list li {
+  background: #16213e;
+  color: #00d1ff;
+  border: 1px solid #0f3460;
+}
+
+/* Glitch animation for Robo Theme */
+@keyframes glitch {
+  0%, 100% { transform: translate(0, 0); }
+  20% { transform: translate(-3px, 3px); }
+  40% { transform: translate(-3px, -3px); }
+  60% { transform: translate(3px, 3px); }
+  80% { transform: translate(3px, -3px); }
+}
