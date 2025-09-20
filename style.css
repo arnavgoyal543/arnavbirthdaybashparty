@@ -192,10 +192,10 @@ input:focus {
 
 /* --- NEW & IMPROVED RESPONSIVE DESIGN --- */
 
-/* For smaller tablets */
+/* For tablets */
 @media (max-width: 768px) {
   .container {
-    margin: 40px 20px 0 20px; /* Add horizontal margin */
+    margin: 40px 20px 40px 20px;
     padding: 32px 24px;
   }
 }
@@ -203,34 +203,42 @@ input:focus {
 /* For mobile phones */
 @media (max-width: 480px) {
   .container {
-    margin: 20px 10px; /* Reduce top and side margins for a tighter fit */
-    padding: 24px 16px;
-    border-radius: 16px;
-    box-shadow: 0 8px 30px rgba(255, 136, 90, 0.1);
+    /* Make the card bigger by reducing side margins */
+    margin: 20px 15px; 
+    /* Increase padding to give content more space */
+    padding: 30px 20px; 
+    border-radius: 20px;
   }
 
   .animated-h1 {
-    font-size: 2.1em; /* Smaller heading for small screens */
+    font-size: 2em; /* Slightly smaller to prevent bad wrapping */
+  }
+  
+  .subhead {
+    font-size: 1.1em;
   }
 
-  .animated-p {
-    font-size: 1.05em; /* Adjust sub-heading font */
+  .info {
+    font-size: 1em; /* Optimized font size for readability */
+    line-height: 1.6;
   }
 
   .cake {
-    width: 90px; /* A more balanced cake size for mobile */
-    height: 90px;
-    margin-bottom: 16px;
+    width: 80px; /* Adjusted size */
+    height: 80px;
+  }
+  
+  .animated-form h2 {
+    font-size: 1.5em; /* Better proportion */
   }
 
   input, .rsvp-btn {
-    padding: 14px; /* A little more padding for easier tapping */
-    font-size: 1.05em;
+    padding: 15px; /* Taller inputs for easier tapping */
+    font-size: 1em;
   }
 
   .rsvp-btn:hover {
-    transform: scale(1.05); /* Make hover effect less dramatic on mobile */
-    background: linear-gradient(90deg,#ff6f91 40%,#ffe985 100%);
+    transform: scale(1.05); /* Mobile hover effect */
   }
 }
 /* --- APPEND THESE STYLES TO YOUR style.css FILE --- */
@@ -399,3 +407,4 @@ body.robo-theme #guest-list li {
   60% { transform: translate(3px, 3px); }
   80% { transform: translate(3px, -3px); }
 }
+
